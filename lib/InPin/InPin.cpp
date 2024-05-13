@@ -9,8 +9,10 @@ void InPin::Init(int pinStartState)
 {
 
     _lastPinState = pinStartState;
-
-    pinMode(_pin, _pinState == HIGH ? INPUT_PULLDOWN : INPUT_PULLUP);
+    if (pinStartState == HIGH)
+        pinMode(_pin, INPUT_PULLUP);
+    else
+        pinMode(_pin, INPUT_PULLDOWN);
     UpdateState();
 }
 
